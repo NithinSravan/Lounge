@@ -1,0 +1,41 @@
+<main class="profile">
+  <section class="details">
+       <div class="name">
+          <h2>Name</h2>
+          <span>{{name}}</span>
+      </div>
+      <div class="username">
+        <h2>Username</h2>
+        <span>{{username}}</span>
+      </div>
+      <div class="totalfriends">
+        <h2>Friends</h2>
+        <span>{{totalFriends}}</span>
+      </div>
+  </section>
+  <button class="followbtn"*ngIf="username!==user.username&&!areFriends&&!pendingReq" (click)="this.profileService.followUser()">
+   <span *ngIf="!reqSent"> Follow</span>
+   <span *ngIf="reqSent">Request Sent</span>
+  </button>
+    <button class="followbtn"*ngIf="username!==user.username&&!areFriends&&pendingReq" (click)="this.profileService.onAccept(username)">
+      <span >Confirm</span>
+  </button>
+
+  <button class="followbtn"*ngIf="username!==user.username&&areFriends" (click)="this.profileService.unfollow()">
+    <span> Unfollow</span>
+   </button>
+  <button class="followbtn"*ngIf="username!==user.username&&pendingReq" (click)="this.profileService.onReject(username)">
+    <span>Decline</span>
+   </button>
+  <div id="divide"></div>
+  <section *ngIf="areFriends||username===user.username" class="content">
+    <div class="card" *ngFor="let post of posts;let i=index;">
+      <div class="user-name" >{{post.creatorname}}</div>
+      <div class="post-img">
+        <img [src]="post.imagePath" alt="lol">
+      </div>
+      <div class="comments">{{post.content}}</div>
+      <div id="likes-panel"><img (click)="this.profileService.onLike(i)" (load)="this.profileService.checkIfLiked(i)" class="likes" src="../../assets/img/heart.svg"><h5 class="likes-count">{{post.likes}}</h5></div>
+    </div>
+  </section>
+</main>

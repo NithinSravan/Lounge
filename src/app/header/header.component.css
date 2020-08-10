@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+*{
+    box-sizing: border-box;
+}
+.shadow-dreamy{
+  box-shadow:0 1px 2px rgba(255,165,0,0.07),
+  0 2px 4px rgba(255,165,0,0.07),0 4px 8px rgba(0,0,0,0.07),
+  0 8px 16px rgba(255,165,0,0.07),
+  0 16px 32px rgba(255,165,0,0.07),
+  0 32px 64px rgba(255,165,0,0.07)
+}
+header{
+  position: fixed;
+  top: 0;
+   height: 80px;
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    background:orange;
+    z-index: 1;
+
+}
+
+
+header h1{
+    font-family: 'Sen';
+    color: rgb(255, 255, 255);
+    padding: 15px 20px;
+}
+header .top{
+  display: flex;
+  align-items: center;
+  flex:1;
+  height: 100%;
+
+}
+.hr{
+    background-color: rgba(255,165,0,0.2);
+}
+ nav{
+    display:flex;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    padding:0 0 0 20px;
+ }
+nav ul,.user-link ul{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    list-style:none;
+    padding:0;
+    font-size: 0.75em;
+}
+.navlist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin:0 20px;
+}
+nav a, .user-link a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    height: 100%;
+    color: #000;
+    text-decoration: none;
+    transition: 0.1s;
+}
+.user-link li,.user-link a{
+  padding: 0;
+}
+.active, nav a:hover,.user-link a:hover{
+  border-bottom:5px solid;
+  margin-bottom:-5px;
+  filter: invert(1) sepia(0) saturate(1) hue-rotate(0deg) brightness(1);
+}
+
+header img{
+    width:5vh;
+    height:5vh;
+    filter: invert(0) sepia(0) saturate(1) hue-rotate(0deg) brightness(1);
+}
+#logout{
+  background: none;
+  border-radius: 20px;
+  border: 2px solid white;
+  color:white;
+  width:10vw;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 400;
+}
+#logout:hover{
+  background: white;
+  color:orange;
+}
+#username{
+  text-decoration: none;
+  margin: 0 10px;
+}
+#username:hover{
+color:white;
+cursor: pointer;
+}
+.user-link{
+    flex:1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    font-size: 1.25em;
+}
+.show{
+    display: block;
+}
+
+
+/*media queries*/
+@media screen and (max-width:460px){
+    header{
+        position: relative;
+    }
+    nav ul{
+        display:block;
+        position: relative;
+    }
+    nav a{
+        display: block;
+    }
+
+}
+/*breakpoints :
+1. 1065px
+2. 786px
+3. 360px
+*/

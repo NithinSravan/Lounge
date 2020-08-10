@@ -1,0 +1,26 @@
+iframe{
+  margin: 80px auto;
+  height: 100vh;
+  width: 100vw;
+}
+#game-selector{
+  display: flex;
+  padding:50px;
+  margin: 80px auto;
+  justify-content: space-between;
+}
+#game-selector button{
+  padding: 15px 10px;
+  border-radius: 36px;
+  margin-bottom: 5px;
+  outline: none;
+  color:#000;
+  width:25%;
+  transition: 0.3s;
+  text-align: center;
+  opacity: 1;
+  border:none;
+  transform: scale(0.9);
+  font-size: 1rem;
+  background:rgb(162, 241, 43);
+}

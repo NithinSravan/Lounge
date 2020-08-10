@@ -1,0 +1,75 @@
+.side{
+  position:fixed;
+  top:80px;
+  right:0;
+  height: 89%;
+  width:30%;
+  overflow:auto;
+}
+.notifcard{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(109, 101, 101,0.5);
+  padding: 20px 20px 0;
+}
+.name{
+  font-size: 1.2em;
+}
+.username{
+  color: rgb(100, 86, 86);
+  font-size: 1em;
+}
+.sender{
+  flex:1;
+}
+.buttons{
+  flex:1;
+}
+.friends-now{
+  color:orange;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1rem;
+}
+.acceptbtn,.rejectbtn{
+  padding: 15px 10px;
+  border-radius: 25px;
+  margin-bottom: 5px;
+  outline: none;
+  color:#ffffff;
+  width:50%;
+  transition: 0.3s;
+  text-align: center;
+  opacity: 1;
+  border:none;
+  transform: scale(0.9);
+  font-size: 1rem;
+  background-color: greenyellow;
+}
+.rejectbtn{
+  background-color: rgb(255, 47, 47);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track{
+	border-radius: 10px;
+	background-color: #e2d6d6;
+}
+::-webkit-scrollbar{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: rgba(94, 94, 94, 0.8);
+}
+
+#notifications{
+  color: #000;
+  font-size: 1.1em;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow:0px 0px 15px rgba(0,0,0,0.3);
+}

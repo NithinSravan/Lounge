@@ -1,0 +1,9 @@
+<div class="signup">
+  <form  (submit)="onSignup(signupForm)" #signupForm="ngForm" autocomplete="off">
+    <input type="text" ngModel name="name"  #nameInput="ngModel" placeholder="enter full name">
+    <input type="text" ngModel name="username"  #nameInput="ngModel" placeholder="enter username">
+    <input type="email" ngModel id="name" name="email" #emailInput="ngModel" placeholder="email">
+    <input type="password" ngModel id="password" name="password" #passwordInput="ngModel"  placeholder="password">
+  <button type="submit" id="signupbtn">Sign Up</button>
+  </form>
+</div>

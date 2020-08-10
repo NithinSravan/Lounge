@@ -1,0 +1,28 @@
+<section class="side">
+  <div id="leaderboard">
+    <div id="head-banner">Leaderboard</div>
+    <div class="tabs">
+      <li>game1</li>
+      <li>game2</li>
+      <li>game3</li>
+    </div>
+    <div id="board-header">
+      <div>Rank</div>
+      <div>
+       Player
+      </div>
+      <div>
+        Best
+      </div>
+    </div>
+    <div class="board" *ngFor="let score of scores;let i=index;" >
+      <div>#{{i+1}}</div>
+      <div>
+        {{score.playername}}
+      </div>
+      <div>
+        {{score.best}}
+      </div>
+    </div>
+  </div>
+</section>

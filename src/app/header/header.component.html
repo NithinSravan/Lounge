@@ -1,0 +1,41 @@
+<header id="navbar" class="shadow-dreamy" *ngIf="userIsAuthenticated" >
+  <div class="top">
+      <h1>Lounge.</h1>
+
+      <app-search></app-search>
+
+  </div>
+  <nav>
+      <ul>
+          <li class="navlist">
+              <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" title="Home">
+                  <img id="home" src="../../assets/img/home.svg">
+              </a>
+          </li>
+          <li class="navlist">
+              <a title="Games" routerLink="/games" routerLinkActive="active">
+                  <img id="games" src="../../assets/img/joystick.svg">
+              </a>
+          </li>
+          <li class="navlist">
+              <a title="Friends Lobby" routerLink="/addgame" routerLinkActive="active">
+                  <img id="chat" src="../../assets/img/group.svg">
+              </a>
+          </li>
+      </ul>
+  </nav>
+  <div class="user-link">
+    <ul>
+      <li class="navlist">
+        <button id="logout" (click)="onLogout()">
+          Log Out
+      </button>
+      </li>
+      <li [routerLink]="['/profile',user.userId]"  class="navlist">
+          <img src="../../assets/img/user.svg">
+         <div id="username"> {{user.username}}</div>
+      </li>
+  </ul>
+  </div>
+</header>
+

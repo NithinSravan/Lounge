@@ -1,0 +1,9 @@
+#gameform{
+  margin-top: 80px;
+}
+input[type="file"]{
+  visibility: hidden;
+}
+.file-preview{
+  color:#000;
+}

@@ -1,0 +1,17 @@
+<section class="side">
+  <div id="notifications">Notifications</div>
+  <div *ngFor="let notif of notifs;let i=index" >
+    <div class="notifcard" >
+      <div class="sender">
+        <div class="name">{{notif.name}}</div>
+        <div class="username">{{notif.username}}</div>
+      </div>
+      <div class="buttons">
+        <button class="acceptbtn" (click)="this.notifsService.onAccept(notif.username,i)">Accept</button>
+        <button class="rejectbtn" (click)="this.notifsService.onReject(notif.username,i)">Reject</button>
+      </div>
+    </div>
+
+
+</div>
+</section>

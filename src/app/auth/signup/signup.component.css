@@ -1,0 +1,16 @@
+.signup{
+  margin-top:50px;
+}
+.signup input{
+  border-bottom:3px solid rgb(79, 185, 247);
+}
+.signup input:focus{
+  border-bottom:3px solid rgb(12, 72, 182);
+  transform: scale(1.1);
+}
+#signupbtn{
+  background:rgb(59, 100, 235);
+}
+#signupbtn:hover{
+  transform: scale(1.08);
+}

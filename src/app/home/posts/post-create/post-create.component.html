@@ -1,0 +1,21 @@
+<div class="card">
+  <form [formGroup]="form" (submit)="onSavePost()" >
+    <div class="img-controls">
+      <button id="imgbtn" type="button" (click)="filePicker.click()">Add image</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="img-preview" *ngIf="imagePreview!==''&&imagePreview&& form.get('image').valid">
+      <img [src]="imagePreview" alt="image">
+    </div>
+  <textarea placeholder="Write your thoughts..."
+  rows="20"
+  formControlName="content"
+  id="content"
+  cols="40"
+  class="ui-autocomplete-input shadow-dreamy"
+  type="text">
+</textarea>
+  <button type="submit" id="createbtn">Post</button>
+  </form>
+
+</div>

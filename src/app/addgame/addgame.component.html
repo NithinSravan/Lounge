@@ -1,0 +1,13 @@
+
+  <form id="gameform" [formGroup]="form" (submit)="onUpload()">
+    <div class="img-controls">
+      <button id="addgamebtn" type="button" (click)="filePicker.click()">Choose File</button>
+      <input type="file" #filePicker (change)="onFilePicked($event)">
+    </div>
+    <div class="file-preview" *ngIf="filePreview!==''&&filePreview&& form.get('file').valid">
+      {{file}}
+    </div>
+    <button type="submit" id="uploadbtn">Upload</button>
+  </form>
+
+<h2>Instructions to upload:</h2>

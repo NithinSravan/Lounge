@@ -1,0 +1,37 @@
+.card{
+  max-width: 590px;
+  width: 80%;
+  margin: 10px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow:0px 0px 15px rgba(0,0,0,0.3);
+  padding: 30px 0;
+}
+.user-name,.post-img,.comments{
+  width: 100%;
+}
+.user-name,.comments{
+  padding:10px;
+}
+.post-img img{
+  width:100%;
+}
+#likes-panel{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.likes{
+  width: 8%;
+  transition:0.2s ease-in;
+  filter: invert(1) sepia(95) saturate(0) hue-rotate(0deg) brightness(1);
+}
+.likes-count{
+  font-size: 2em;
+  margin:0 10px;
+}
+/* #likes:hover{
+  transform: scale(1.1);
+  filter: invert(0) sepia(0) saturate(1) hue-rotate(0deg) brightness(1);
+} */
+
