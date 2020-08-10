@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AddgameService {
-  gamename:string[]=[];
+  url:string[]=[];
   private gameUpdated=new Subject();
 
   constructor(private http:HttpClient) { }
@@ -17,9 +17,9 @@ export class AddgameService {
     gameUpload.append("file",file,filename[0]);
     this.http.post<{gamename:string}>("http://localhost:3000/add-game",gameUpload)
     .subscribe(data=>{
-     console.log("game added")
-    //  this.gamename.push(data.gamename)
-    //  this.gameUpdated.next([...this.gamename])
+     console.log("game added",data.gamename)
+    //  this.url.push(data.url)
+    //  this.gameUpdated.next([...this.url])
     })
   }
   getGameUpdateListener(){

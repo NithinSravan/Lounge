@@ -1,12 +1,12 @@
 // mongoAtlas password: yYlH15EJlV7eguyy
 const mongoose=require('mongoose');
-  // gameId:{
-  //   type:mongoose.Schema.Types.ObjectId,
-  //   ref:'Game',
-  //   required:true
-  // },
-const scoreCardSchema = new mongoose.Schema({
 
+const scoreCardSchema = new mongoose.Schema({
+  gameId:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Game',
+    required:true
+  },
   best:{
     type:Number,
     required:true
