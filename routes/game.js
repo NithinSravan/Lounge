@@ -60,7 +60,7 @@ try{
   const gamename=req.body.gamename
   fs.createReadStream(`allgameszip/${filename}`)
   .pipe(unzipper.Extract({ path: 'allgames' }));
-  const url=req.protocol+"://"+req.get("host")+"/"+ogfilename+"/index.html";
+  const url='https://loungeinc.herokuapp.com/'+ogfilename+"/index.html";
   const game=new Game({
     url:url,
     gamename:gamename

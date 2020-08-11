@@ -34,11 +34,11 @@ const storage=multer.diskStorage({
 });
 
 router.post('',auth,multer({storage}).single('image'),async (req,res)=>{
-  const url=req.protocol+"://"+req.get("host");
+  const url='https://loungeinc.herokuapp.com/';
   const post=new Post(
     {
      content:req.body.content,
-     imagePath:url+"/images/"+req.file.filename,
+     imagePath:url+"images/"+req.file.filename,
      likes:0,
      creator:req.userData.userId,
      creatorname:req.userData.username
