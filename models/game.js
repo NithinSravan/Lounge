@@ -3,8 +3,12 @@ const mongoose=require('mongoose');
 const uniqueValidator=require('mongoose-unique-validator');
 
 const gameSchema = new mongoose.Schema({
-
-foldername:{
+  url:{
+    type:String,
+    default:null,
+    required:true
+  },
+gamename:{
   type:String,
   unique:true,
   required:true

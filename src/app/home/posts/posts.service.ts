@@ -5,7 +5,9 @@ import{map}from 'rxjs/operators'
 
 import{Post} from './post.model'
 import { AuthService } from 'src/app/auth/auth.service';
+import { environment } from 'src/environments/environment';
 
+const HOST_URL=environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +17,7 @@ export class PostsService {
   private postUpdated= new Subject<Post[]>();
   constructor(private http:HttpClient,private authService:AuthService) { }
   getPosts(){
-   this.http.get<{posts:Post[]}>('http://localhost:3000/')
+   this.http.get<{posts:Post[]}>(HOST_URL)
  .subscribe(postsArr=>{
       console.log(postsArr)
       this.posts=postsArr.posts;
@@ -34,7 +36,7 @@ export class PostsService {
       this.posts[i].likedBy.push(likedBy);
       this.posts[i].likes=this.posts[i].likedBy.length;
       this.likes=this.posts[i].likes;
-      this.http.put<{post:Post}>('http://localhost:3000/like/'+this.posts[i]._id,this.posts[i])
+      this.http.put<{post:Post}>(HOST_URL+'like/'+this.posts[i]._id,this.posts[i])
       .subscribe(resData=>{
 
 
@@ -49,7 +51,7 @@ export class PostsService {
       if(this.posts[i])
       this.posts[i].likes=this.posts[i].likedBy.length;
       this.likes=this.posts[i].likes;
-      this.http.put<{post:Post}>('http://localhost:3000/like/'+this.posts[i]._id,this.posts[i])
+      this.http.put<{post:Post}>(HOST_URL+'like/'+this.posts[i]._id,this.posts[i])
       .subscribe(resData=>{
         this.postUpdated.next([...this.posts]);
       })
@@ -78,7 +80,7 @@ export class PostsService {
     postData.append("content",content);
     const filename=content.split(" ");
     postData.append("image",image,filename[0]);
-    this.http.post<{message:string,post:any}>('http://localhost:3000/',postData)
+    this.http.post<{message:string,post:any}>(HOST_URL,postData)
     .subscribe((resData)=>{
       const post:Post={
         _id:resData.post._id,

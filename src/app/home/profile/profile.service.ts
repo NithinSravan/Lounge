@@ -4,7 +4,9 @@ import { Post } from '../posts/post.model';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { NotificationsService } from '../notifications/notifications.service';
+import { environment } from 'src/environments/environment';
 
+const HOST_URL=environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +22,7 @@ export class ProfileService {
   private profileUpdated= new Subject();
   constructor(private http:HttpClient,private authService:AuthService) { }
   getProfile(id){
-    this.http.get<{username:string,name:string,posts:Post[],totalFriends:number}>("http://localhost:3000/"+id)
+    this.http.get<{username:string,name:string,posts:Post[],totalFriends:number}>(HOST_URL+id)
     .subscribe(res=>{
        this.posts=res.posts;
        this.username=res.username;
@@ -55,7 +57,7 @@ export class ProfileService {
         this.posts[i].likedBy.push(likedBy);
         this.posts[i].likes=this.posts[i].likedBy.length;
         this.likes=this.posts[i].likes;
-        this.http.put<{post:Post}>('http://localhost:3000/like/'+this.posts[i]._id,this.posts[i])
+        this.http.put<{post:Post}>(HOST_URL+'like/'+this.posts[i]._id,this.posts[i])
         .subscribe(resData=>{
           this.profileUpdated.next({
             username:this.username,
@@ -76,7 +78,7 @@ export class ProfileService {
         if(this.posts[i])
         this.posts[i].likes=this.posts[i].likedBy.length;
         this.likes=this.posts[i].likes;
-        this.http.put<{post:Post}>('http://localhost:3000/like/'+this.posts[i]._id,this.posts[i])
+        this.http.put<{post:Post}>(HOST_URL+'like/'+this.posts[i]._id,this.posts[i])
         .subscribe(resData=>{
                 this.profileUpdated.next({
             username:this.username,
@@ -108,7 +110,7 @@ export class ProfileService {
     followUser(){
       console.log(this.username)
       if( this.reqSent===false){
-        this.http.patch<{message:string}>('http://localhost:3000/request',{username:this.username})
+        this.http.patch<{message:string}>(HOST_URL+'request',{username:this.username})
         .subscribe(res=>{
           console.log(res.message)
           this.reqSent=true;
@@ -131,7 +133,7 @@ export class ProfileService {
     unfollow(){
       console.log(this.username)
       if( this.areFriends){
-        this.http.patch<{message:string}>('http://localhost:3000/unfollow',{username:this.username})
+        this.http.patch<{message:string}>(HOST_URL+'unfollow',{username:this.username})
         .subscribe(res=>{
           console.log(res.message)
           this.areFriends=false;
@@ -151,7 +153,7 @@ export class ProfileService {
       }
     }
     onAccept(username:string){
-      this.http.patch('http://localhost:3000/accept',{username})
+      this.http.patch(HOST_URL+'accept',{username})
       .subscribe(res=>{
         console.log(res)
         this.areFriends=true;
@@ -169,7 +171,7 @@ export class ProfileService {
       })
     }
     onReject(username:string){
-      this.http.patch('http://localhost:3000/reject',{username})
+      this.http.patch(HOST_URL+'reject',{username})
       .subscribe(res=>{
         this.areFriends=false;
         this.pendingReq=false;
@@ -186,7 +188,7 @@ export class ProfileService {
       })
     }
     friendshipStatus(id:string){
-      this.http.get<{checkSent:string[],checkFriendsList:string[],checkRequest:string[]}>('http://localhost:3000/friendship-status/'+id)
+      this.http.get<{checkSent:string[],checkFriendsList:string[],checkRequest:string[]}>(HOST_URL+'friendship-status/'+id)
       .subscribe((areFriends)=>{
         console.log(areFriends.checkFriendsList.length)
         if(areFriends.checkSent.length!==0){

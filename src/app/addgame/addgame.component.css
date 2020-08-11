@@ -1,9 +1,103 @@
-#gameform{
+#banner{
   margin-top: 80px;
+  background: url("../../assets/img/gamebg.svg");
+  background-attachment: fixed;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#instrct{
+  margin-top:50px;
+  margin-left: 30px;
+  font-size: 1.1em;
+}
+#gameupload{
+  width: 100%;
+}
+#gameform{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 30px;
+  padding: 50px 0;
+  justify-content: center;
+  align-items: center;
+}
+#gamename{
+  display:block;
+  outline:none;
+  color: #222222;
+  margin: 20px 0;
+  width: 30%;
+  padding: 10px 20px;
+  transition: 0.5s;
+  border:none;
+  border-bottom:3px solid  rgb(253, 24, 74);
+}
+#gamename:focus{
+  border-bottom:3px solid rgb(230, 26, 60);
+  transform: scale(1.1);
+}
+#banner h1{
+  overflow: hidden;
+  width: 580px;/* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  font-size: 2.5em; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0em; /* Adjust as needed */
+  animation:
+    typing 5.5s steps(40, end),
+    blink-caret .45s step-end infinite;
+}
+#addgame-controls{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }
 input[type="file"]{
   visibility: hidden;
+  display: block;
+
+}
+#addgamebtn,#uploadbtn{
+  padding: 15px 10px;
+  border-radius: 36px;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  width: 15%;
+  margin-top: 10px;
+  margin-bottom:10px;
+  font-weight: 700;
+  border:none;
+  background:linear-gradient(45deg,rgb(255, 87, 219),rgb(205, 42, 255),rgb(161, 47, 255),rgb(87, 27, 226));
+  color:#fff;
+}
+#uploadbtn{
+  width: 20%;
+  margin-top: 10px;
+  background:none;
+  border:2px solid rgb(29, 255, 78);
+  color:rgb(29, 255, 78);
+}
+#uploadbtn:hover{
+  background:rgb(29, 255, 78);
+  color:#fff;
 }
 .file-preview{
   color:#000;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 580px }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(253, 24, 74); }
 }

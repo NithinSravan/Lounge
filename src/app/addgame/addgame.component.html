@@ -1,13 +1,30 @@
-
+<div id="banner">
+  <h1>Welcome to Lounge Gaming.</h1>
+</div>
+<main id="game-upload">
+  <div id="instrct">
+    <h2>Follow these steps to upload your JS game:</h2>
+    <ol >
+      <li>Code the game according to your ideas and write a function which is called after the game ends.</li>
+      <li>This function <strong>MUST</strong> include <strong>parent.postMessage()</strong> function to send the score to Lounge servers.</li>
+      <li>Make sure you don't store your scores or related data in the LocalStorage.</li>
+      <li>Wrap your game files in a folder with the game's name(<strong>NOTE:</strong> folder name should be in lowercase without spaces).</li>
+      <li>Zip your game folder using desired application.</li>
+      <li>Click "Add Game" to upload your zip file, enter the name of the game(for users to identify) and press "Upload" after ensuring the file you have chosen.</li>
+      <li>Voila! Your game is now available in Lounge GameHub or everyone to enjoy!</li>
+    </ol>
+  </div>
+  <div class="addgame-controls">
   <form id="gameform" [formGroup]="form" (submit)="onUpload()">
-    <div class="img-controls">
-      <button id="addgamebtn" type="button" (click)="filePicker.click()">Choose File</button>
+      <button id="addgamebtn" type="button" (click)="filePicker.click()">Add Game</button>
       <input type="file" #filePicker (change)="onFilePicked($event)">
-    </div>
     <div class="file-preview" *ngIf="filePreview!==''&&filePreview&& form.get('file').valid">
       {{file}}
     </div>
+    <input type="text" formControlName="gamename" id="gamename" placeholder="enter game name">
     <button type="submit" id="uploadbtn">Upload</button>
   </form>
+</div>
+</main>
 
-<h2>Instructions to upload:</h2>
+

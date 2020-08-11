@@ -2,9 +2,7 @@
   <div id="leaderboard">
     <div id="head-banner">Leaderboard</div>
     <div class="tabs">
-      <li>game1</li>
-      <li>game2</li>
-      <li>game3</li>
+      <li *ngFor="let game of games;let i=index;" (click)="this.gamesService.getScores(this.gamesService.getGamename(i))">{{this.gamesService.getGamename(i)}}</li>
     </div>
     <div id="board-header">
       <div>Rank</div>

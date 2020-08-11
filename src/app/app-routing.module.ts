@@ -11,7 +11,7 @@ import { AddgameComponent } from './addgame/addgame.component';
 const routes: Routes = [
   {path:'',component:HomeComponent,canActivate:[AuthGuard]},
   {path:'addgame',component:AddgameComponent, canActivate:[AuthGuard]},
-  {path:'games',component:GamesComponent, canActivate:[AuthGuard]},
+  {path:'games',component:GamesComponent,canActivate:[AuthGuard]},
   {path:'profile/:id',component:ProfileComponent,canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent}

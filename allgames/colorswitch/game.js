@@ -461,7 +461,7 @@ function setBallVel() {
 
 function best() {
 
-    parent.postMessage(s,"*")
+    parent.postMessage({score:s,gamename:"ColorSwitch"},"*")
 
     // bestScore.innerHTML = `Score: ${s}<br>Best Score: ${JSON.parse(localStorage.getItem(`score`))}`;
     // bestScore.style.display = "block";

@@ -1,7 +1,5 @@
 <div id="game-selector">
-  <button (click)="gameSelect(0)">Color Switch</button>
-  <button>Bubble Burst</button>
-  <button>Reflex Flex</button>
+  <button *ngFor="let game of games;let i=index;" (click)="this.gamesService.gameSelect(i)">{{this.gamesService.games[i].gamename}}</button>
 </div>
 
-<iframe src="https://nithinsravan.github.io/ColorSwitchSP/">Game</iframe>
+<iframe>Game</iframe>

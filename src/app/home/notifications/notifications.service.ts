@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
+const HOST_URL=environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +13,7 @@ export class NotificationsService {
   constructor(private http:HttpClient) { }
 
   getNotifs(){
-    this.http.get<{requests:any}>('http://localhost:3000/received-requests')
+    this.http.get<{requests:any}>(HOST_URL+'received-requests')
     .subscribe(res=>{
       console.log(res.requests)
       this.notifs=res.requests;
@@ -22,7 +24,7 @@ export class NotificationsService {
     return this.notifsUpdated.asObservable();
   }
   onAccept(username:string,i:number){
-    this.http.patch('http://localhost:3000/accept',{username})
+    this.http.patch(HOST_URL+'accept',{username})
     .subscribe(res=>{
       console.log(res)
       const buttons=document.getElementsByClassName('buttons') as HTMLCollectionOf<HTMLElement>
@@ -37,7 +39,7 @@ export class NotificationsService {
     })
   }
   onReject(username:string,i:number){
-    this.http.patch('http://localhost:3000/reject',{username})
+    this.http.patch(HOST_URL+'reject',{username})
     .subscribe(res=>{
       (document.getElementsByClassName('notifcard') as HTMLCollectionOf<HTMLElement>)[i].style.display="none";
       this.notifs.splice(i,1);

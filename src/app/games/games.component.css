@@ -6,8 +6,8 @@ iframe{
 #game-selector{
   display: flex;
   padding:50px;
+  flex-direction: row;
   margin: 80px auto;
-  justify-content: space-between;
 }
 #game-selector button{
   padding: 15px 10px;

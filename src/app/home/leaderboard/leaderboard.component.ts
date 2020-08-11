@@ -1,9 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { scoreCard } from './scorecard.model';
 import { Subscription } from 'rxjs';
-import { LeaderboardService } from './leaderboard.service';
-import { AuthService } from 'src/app/auth/auth.service';
-import { User } from 'src/app/auth/user.model';
 import { GamesService } from 'src/app/games/games.service';
 
 @Component({
@@ -14,15 +11,25 @@ import { GamesService } from 'src/app/games/games.service';
 export class LeaderboardComponent implements OnInit,OnDestroy {
 
   scores:scoreCard[]=[];
+  i:number;
+  games:any[]=[]
+  private gamesSub: Subscription;
+  private indexSub:Subscription;
   private scoresSub: Subscription;
 
-  constructor(public gameService:GamesService) { }
+  constructor(public gamesService:GamesService) { }
 
   ngOnInit() {
-    this.gameService.getScores();
 
-    this.scoresSub=this.gameService.getScoreUpdateListener().subscribe((scores:scoreCard[])=>{
+    this.scoresSub=this.gamesService.getScoreUpdateListener().subscribe((scores:scoreCard[])=>{
         this.scores=scores;
+      });
+      this.gamesService.getGames();
+      this.gamesSub=this.gamesService.getGameUpdateListener().subscribe((games:any[])=>{
+        this.games=games;
+      });
+      this.indexSub=this.gamesService.getIndexUpdateListener().subscribe((index)=>{
+        this.i=index;
       });
 
   }

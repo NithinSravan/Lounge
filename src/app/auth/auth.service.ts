@@ -5,7 +5,9 @@ import { LoginData } from './auth-login.model';
 import { User } from './user.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
+const HOST_URL=environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -36,7 +38,7 @@ export class AuthService {
       email,
       password
     }
-    this.http.post('http://localhost:3000/signup',authData)
+    this.http.post(HOST_URL+'signup',authData)
     .subscribe(res=>{
       this.router.navigate(['/login']);
       console.log(res);
@@ -62,7 +64,7 @@ export class AuthService {
       email,
       password
     }
-    this.http.post<{token:string,expiresIn:number,username:string,userId:string,name:string}>('http://localhost:3000/login',loginData)
+    this.http.post<{token:string,expiresIn:number,username:string,userId:string,name:string}>(HOST_URL+'login',loginData)
     .subscribe(res=>{
       const token=res.token;
       this.token=token;

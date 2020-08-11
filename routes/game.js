@@ -6,6 +6,7 @@ const multer=require("multer");
 const unzipper = require('unzipper')
 const fs=require('fs');
 const game = require('../models/game');
+const { url } = require('inspector');
 // async function main () {
 //   try {
 //     await extract(source, { dir: target })
@@ -56,53 +57,63 @@ router.post("/add-game",multer({storage}).single('file'),async(req,res)=>{
 try{
   const filename=req.file.filename;
   const ogfilename=req.file.originalname;
-  fs.ReadStream(`allgameszip/${filename}`)
+  const gamename=req.body.gamename
+  fs.createReadStream(`allgameszip/${filename}`)
   .pipe(unzipper.Extract({ path: 'allgames' }));
-  console.log(ogfilename)
+  const url=req.protocol+"://"+req.get("host")+"/"+ogfilename+"/index.html";
   const game=new Game({
-    foldername:ogfilename
+    url:url,
+    gamename:gamename
   })
   await game.save()
-  res.status(200).json({gamename:ogfilename})
+  res.status(200).json(game)
 }catch(e){
   res.status(500).send(e)
 }
-})
-router.get("/scores",async(req,res)=>{
-  const scores=await scoreCard.find().sort({best:-1});
+});
+router.get("/games",async(req,res)=>{
+  const games=await Game.find();
+  // console.log(games)
+  res.status(200).json({games});
+ });
+router.get("/scores/:gamename",async(req,res)=>{
+  console.log(req.params.gamename)
+  const game=await Game.findOne({gamename:req.params.gamename})
+  const scores=await scoreCard.find({gameId:game._id}).sort({best:-1});
   res.status(200).json({scores});
  });
-// router.post("/score",auth,async(req,res)=>{
-//   try {
-//     const game=await Game.findOne({foldername:"colorswitch"})
-//     let score= await scoreCard.findOne({player:req.userData.userId,gameId:game._id});
-//     console.log(score)
-//      if(!score){
-//       score=new scoreCard({
-//         gameId:game._id,
-//         best:req.body.score,
-//         player:req.userData.userId,
-//         playername:req.userData.username
-//       });
-//       // console.log(game)
-//       await score.save();
-//      }
-//      else if(score.best<req.body.score){
-//        score.best=req.body.score;
-//        await score.save();
-//      }
-//      const scorecard={
-//       id:score._id,
-//       gameId:score.gameId,
-//       best:score.best,
-//       player:score.player,
-//       playername:score.playername
-//      }
-//     res.status(201).json({message:"Score added!",scorecard})
-// } catch (e) {
-//     res.status(400).send(e)
-// }
-// });
+router.post("/score",auth,async(req,res)=>{
+  try {
+    console.log(req.body.gamename,"gamename")
+    const game=await Game.findOne({gamename:req.body.gamename})
+    let score= await scoreCard.findOne({player:req.userData.userId,gameId:game._id});
+    // console.log(score)
+     if(!score){
+      score=new scoreCard({
+        gameId:game._id,
+        best:req.body.score,
+        player:req.userData.userId,
+        playername:req.userData.username
+      });
+      // console.log(game)
+      await score.save();
+     }
+     else if(score.best<req.body.score){
+       score.best=req.body.score;
+       await score.save();
+     }
+     const scorecard={
+      id:score._id,
+      gameId:score.gameId,
+      best:score.best,
+      player:score.player,
+      playername:score.playername
+     }
+    res.status(201).json({message:"Score added!",scorecard})
+} catch (e) {
+    res.status(400).send(e)
+}
+});
 
 
 module.exports=router;

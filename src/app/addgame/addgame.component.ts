@@ -16,7 +16,8 @@ export class AddgameComponent implements OnInit {
 
   ngOnInit(): void {
     this.form=new FormGroup({
-    file:new FormControl(null,{validators:[Validators.required],asyncValidators:mimeType})
+      gamename:new FormControl(null,{validators:[Validators.required]}),
+      file:new FormControl(null,{validators:[Validators.required],asyncValidators:mimeType})
     });
   }
   onFilePicked(event:Event){
@@ -26,7 +27,6 @@ export class AddgameComponent implements OnInit {
     const reader=new FileReader();
     reader.onload=()=>{
       this.filePreview=reader.result as string;
-      console.log(this.form.get('file').valid)
     }
     this.file=file.name;
 
@@ -38,6 +38,6 @@ export class AddgameComponent implements OnInit {
       console.log(":O")
       return;
     }
-    this.addgameService.addGame(this.form.value.file)
+    this.addgameService.addGame(this.form.value.gamename,this.form.value.file)
   }
 }
