@@ -18,7 +18,7 @@ var cors = require('cors');
 const app=express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-app.use("/images",express.static(path.join("backend/uploads/images")));
+app.use(express.static(path.join("backend/uploads/images")));
 app.use(express.static(path.join(__dirname,"allgames")));
 
 app.use((req,res,next)=>{
