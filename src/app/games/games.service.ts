@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../auth/user.model';
 import { scoreCard } from '../home/leaderboard/scorecard.model';
 import { AddgameService } from '../addgame/addgame.service';
 import { environment } from 'src/environments/environment';
@@ -83,5 +82,7 @@ export class GamesService {
     this.indexUpdated.next(this.i);
     document.querySelector('iframe').src=this.games[i].url;
     document.getElementById('game-selector').style.display="none";
+    document.getElementById('gamehub-header').style.display="none";
+    document.getElementById('line').style.display="none";
   }
 }

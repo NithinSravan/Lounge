@@ -1,3 +1,5 @@
+<h1 id="gamehub-header">The Lounge GameHub</h1>
+<div id="line"></div>
 <div id="game-selector">
   <button *ngFor="let game of games;let i=index;" (click)="this.gamesService.gameSelect(i)">{{this.gamesService.games[i].gamename}}</button>
 </div>

@@ -6,8 +6,8 @@
     <h2>Follow these steps to upload your JS game:</h2>
     <ol >
       <li>Code the game according to your ideas and write a function which is called after the game ends.</li>
-      <li>This function <strong>MUST</strong> include <strong>parent.postMessage()</strong> function to send the score to Lounge servers.</li>
-      <li>Make sure you don't store your scores or related data in the LocalStorage.</li>
+      <li>This function <strong>MUST</strong> include <strong>parent.postMessage(&#123; score:s,gamename:"_gamename_" &#125; )</strong> function to send the score and the gamename you have entered below to Lounge servers.</li>
+      <li>Make sure you don't store your scores or related data using LocalStorage.</li>
       <li>Wrap your game files in a folder with the game's name(<strong>NOTE:</strong> folder name should be in lowercase without spaces).</li>
       <li>Zip your game folder using desired application.</li>
       <li>Click "Add Game" to upload your zip file, enter the name of the game(for users to identify) and press "Upload" after ensuring the file you have chosen.</li>

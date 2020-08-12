@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import{HttpClient} from '@angular/common/http';
-import{map}from 'rxjs/operators'
-
 import{Post} from './post.model'
 import { AuthService } from 'src/app/auth/auth.service';
 import { environment } from 'src/environments/environment';
+
 
 const HOST_URL=environment.apiUrl;
 @Injectable({
@@ -38,8 +37,6 @@ export class PostsService {
       this.likes=this.posts[i].likes;
       this.http.put<{post:Post}>(HOST_URL+'like/'+this.posts[i]._id,this.posts[i])
       .subscribe(resData=>{
-
-
         this.postUpdated.next([...this.posts]);
       })
     }

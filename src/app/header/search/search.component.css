@@ -8,6 +8,7 @@ form{
   border-radius: 16px;
   height: 100%;
   flex:1;
+  background-color: #fff;
   padding: 5px 10px;
 }
 .search:focus{
@@ -19,6 +20,7 @@ form{
 #searchbtn{
   background: none;
   border: none;
+  cursor: pointer;
   outline: none;
 }
 #searchbtn:hover{

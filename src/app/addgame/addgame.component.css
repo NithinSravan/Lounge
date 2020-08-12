@@ -14,9 +14,11 @@
   margin-top:50px;
   margin-left: 30px;
   font-size: 1.1em;
+  color:var(--font-color);
 }
 #gameupload{
   width: 100%;
+
 }
 #gameform{
   display: flex;
@@ -30,12 +32,13 @@
 #gamename{
   display:block;
   outline:none;
-  color: #222222;
+  color:var(--font-color);
   margin: 20px 0;
   width: 30%;
   padding: 10px 20px;
   transition: 0.5s;
   border:none;
+  background-color: var(--card-color);
   border-bottom:3px solid  rgb(253, 24, 74);
 }
 #gamename:focus{
@@ -44,12 +47,12 @@
 }
 #banner h1{
   overflow: hidden;
-  width: 580px;/* Ensures the content is not revealed until the animation */
+  width: 580px;
   border-right: .15em solid orange;
-  font-size: 2.5em; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0em; /* Adjust as needed */
+  font-size: 2.5em;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0em;
   animation:
     typing 5.5s steps(40, end),
     blink-caret .45s step-end infinite;
@@ -70,6 +73,7 @@ input[type="file"]{
   margin-bottom: 5px;
   font-size: 1rem;
   width: 15%;
+  cursor: pointer;
   margin-top: 10px;
   margin-bottom:10px;
   font-weight: 700;
@@ -96,7 +100,6 @@ input[type="file"]{
   to { width: 580px }
 }
 
-/* The typewriter cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: rgb(253, 24, 74); }

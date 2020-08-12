@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from '../posts/post.model';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
-import { NotificationsService } from '../notifications/notifications.service';
 import { environment } from 'src/environments/environment';
 
 const HOST_URL=environment.apiUrl;

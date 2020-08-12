@@ -45,8 +45,13 @@ left:0;
   list-style: none;
   background-color: rgb(98, 64, 252);
 }
+.board{
+  background: var(--card-color) ;
+  color:var(--font-color);
+}
 .tabs li{
   padding:15px 15px;
+  cursor: pointer;
 }
 .tabs li:hover{
   background-color: rgb(58, 35, 158);

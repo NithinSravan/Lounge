@@ -1,9 +1,17 @@
+<h1 id="signup-header">Sign Up</h1>
 <div class="signup">
   <form  (submit)="onSignup(signupForm)" #signupForm="ngForm" autocomplete="off">
-    <input type="text" ngModel name="name"  #nameInput="ngModel" placeholder="enter full name">
-    <input type="text" ngModel name="username"  #nameInput="ngModel" placeholder="enter username">
-    <input type="email" ngModel id="name" name="email" #emailInput="ngModel" placeholder="email">
-    <input type="password" ngModel id="password" name="password" #passwordInput="ngModel"  placeholder="password">
+    <input type="text" ngModel required name="name"  #nameInput="ngModel" placeholder="enter full name">
+    <div class="error" *ngIf="submitted&&nameInput.errors.required">*required field</div>
+    <input type="text" ngModel required name="username"  #usernameInput="ngModel" placeholder="enter username">
+    <div class="error" *ngIf="submitted&&usernameInput.errors.required">*required field</div>
+    <input type="email" ngModel required id="name" name="email" #emailInput="ngModel" placeholder="email">
+    <div class="error" *ngIf="submitted&&emailInput.errors.required">*required field</div>
+    <input type="password" ngModel required minlength="7" id="password" name="password" #passwordInput="ngModel"  placeholder="password (min. 7 characters)">
+    <div class="error" *ngIf="submitted&&passwordInput.errors.required">*required field</div>
   <button type="submit" id="signupbtn">Sign Up</button>
   </form>
+  <div id="note">
+    If the form is not getting submitted, please specify a different username or an email ID that hasn't been registered already.
+  </div>
 </div>

@@ -1,4 +1,3 @@
-// mongoAtlas password: yYlH15EJlV7eguyy
 const mongoose=require('mongoose');
 
 const scoreCardSchema = new mongoose.Schema({

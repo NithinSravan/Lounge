@@ -14,20 +14,21 @@
 header{
   position: fixed;
   top: 0;
-   height: 80px;
-    display: flex;
-    margin: 0 auto;
-    width: 100%;
-    background:orange;
-    z-index: 1;
-
+  height: 80px;
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  background:linear-gradient(45deg,var(--grad-1),var(--grad-2),var(--grad-3),var(--grad-4));
+  z-index: 1;
 }
-
-
+input[type="checkbox"]{
+  visibility: hidden;
+}
 header h1{
     font-family: 'Sen';
     color: rgb(255, 255, 255);
     padding: 15px 20px;
+    cursor: pointer;
 }
 header .top{
   display: flex;
@@ -61,6 +62,7 @@ nav ul,.user-link ul{
     justify-content: center;
     align-items: center;
     height: 100%;
+    cursor: pointer;
     margin:0 20px;
 }
 nav a, .user-link a{
@@ -92,6 +94,7 @@ header img{
   border-radius: 20px;
   border: 2px solid white;
   color:white;
+  cursor: pointer;
   width:10vw;
   padding: 10px 20px;
   font-size: 1em;
@@ -99,7 +102,7 @@ header img{
 }
 #logout:hover{
   background: white;
-  color:orange;
+  color:var(--grad-4);
 }
 #username{
   text-decoration: none;
@@ -121,21 +124,6 @@ cursor: pointer;
     display: block;
 }
 
-
-/*media queries*/
-@media screen and (max-width:460px){
-    header{
-        position: relative;
-    }
-    nav ul{
-        display:block;
-        position: relative;
-    }
-    nav a{
-        display: block;
-    }
-
-}
 /*breakpoints :
 1. 1065px
 2. 786px

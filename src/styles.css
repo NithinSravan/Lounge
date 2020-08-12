@@ -4,13 +4,38 @@
   margin:0;
   box-sizing: border-box;
 }
+:root {
+  --card-color: #fff;
+  --font-color: #000;
+  --muted-font:#444242;
+  --grad-1:orange;
+  --grad-2:orange;
+  --grad-3:orange;
+  --grad-4:orange;
+  --bg-color: #fff;
+}
+[data-theme="dark"] {
+    --card-color: rgb(66, 64, 82);
+    --font-color: #fff;
+    --muted-font:#a3a3a3;;
+    --grad-1:rgb(255, 87, 219);
+    --grad-2:rgb(205, 42, 255);
+    --grad-3:rgb(161, 47, 255);
+    --grad-4:rgb(87, 27, 226);
+    --bg-color: rgb(39, 36, 56);
+}
 body{
+  background-color:var(--bg-color);
   overflow-x: hidden;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 body::-webkit-scrollbar {
   display: none;
+}
+.card{
+  background-color: var(--card-color);
+  color:var(--font-color);
 }
 .login,.signup{
   display: flex;

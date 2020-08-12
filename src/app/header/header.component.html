@@ -1,7 +1,7 @@
-<header id="navbar" class="shadow-dreamy" *ngIf="userIsAuthenticated" >
+<header id="navbar"  *ngIf="userIsAuthenticated" >
   <div class="top">
-      <h1>Lounge.</h1>
-
+      <h1 (click)="themeToggle.click()" >Lounge.</h1>
+      <input type="checkbox" #themeToggle (change)="onToggle($event)">
       <app-search></app-search>
 
   </div>
@@ -18,8 +18,8 @@
               </a>
           </li>
           <li class="navlist">
-              <a title="Friends Lobby" routerLink="/addgame" routerLinkActive="active">
-                  <img id="chat" src="../../assets/img/group.svg">
+              <a title="Add Game" routerLink="/addgame" routerLinkActive="active">
+                  <img id="chat" src="../../assets/img/addgame.svg">
               </a>
           </li>
       </ul>

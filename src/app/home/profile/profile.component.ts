@@ -1,13 +1,10 @@
 import { Component, OnInit, OnDestroy, AfterViewChecked, AfterViewInit, AfterContentChecked, AfterContentInit, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { ProfileService } from './profile.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Post } from '../posts/post.model';
 import { User } from 'src/app/auth/user.model';
-import { PostsService } from '../posts/posts.service';
-import { NotificationsService } from '../notifications/notifications.service';
 
 @Component({
   selector: 'app-profile',

@@ -1,6 +1,3 @@
-import { Title } from '@angular/platform-browser';
-import { ArrayType } from '@angular/compiler';
-
 export interface Post{
   _id:string,
   content:string,

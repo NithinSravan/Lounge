@@ -7,11 +7,10 @@ exports.addGame = async (req, res) => {
     const filename = req.file.filename;
     const ogfilename = req.file.originalname;
     const gamename = req.body.gamename;
-    fs.createReadStream(`backend/allgameszip/${filename}`).pipe(
-      unzipper.Extract({ path: "backend/allgames" })
+    fs.createReadStream(`allgameszip/${filename}`).pipe(
+      unzipper.Extract({ path: "allgames" })
     );
-    const url =
-      req.protocol + "://" + req.get("host") + "/" + ogfilename + "/index.html";
+    const url = "https://loungeinc.herokuapp.com/" + ogfilename + "/index.html";
     const game = new Game({
       url: url,
       gamename: gamename,
@@ -43,12 +42,12 @@ exports.gameScore = async (req, res) => {
 };
 exports.updateScore = async (req, res) => {
   try {
+    console.log(req.body.gamename, "gamename");
     const game = await Game.findOne({ gamename: req.body.gamename });
     let score = await scoreCard.findOne({
       player: req.userData.userId,
       gameId: game._id,
     });
-    // console.log(score)
     if (!score) {
       score = new scoreCard({
         gameId: game._id,
@@ -56,7 +55,6 @@ exports.updateScore = async (req, res) => {
         player: req.userData.userId,
         playername: req.userData.username,
       });
-      // console.log(game)
       await score.save();
     } else if (score.best < req.body.score) {
       score.best = req.body.score;

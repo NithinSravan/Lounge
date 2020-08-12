@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{mimeType}from './mime-type.validator';
 import { FormGroup, FormControl,Validators  } from '@angular/forms';
-import { GamesService } from '../games/games.service';
 import { AddgameService } from './addgame.service';
 @Component({
   selector: 'app-addgame',

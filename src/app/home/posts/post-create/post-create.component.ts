@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormGroup, FormControl, Validators } from '@angular/forms';
-
 import { PostsService } from '../posts.service';
 import { Post } from '../post.model';
 import{mimeType}from './mime-type.validator';
@@ -42,5 +41,6 @@ export class PostCreateComponent implements OnInit {
       return;
     }
     this.postsService.addPosts(this.form.value.content,this.form.value.image);
+    this.form.reset();
   }
 }

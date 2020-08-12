@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GamesService } from './games.service';
 import { Subscription } from 'rxjs';
-import { AddgameService } from '../addgame/addgame.service';
 
 
 @Component({
@@ -45,7 +44,6 @@ export class GamesComponent implements OnInit,OnDestroy {
       this.gamename=e.data.gamename;
       if(localStorage.getItem(`${this.gamename}`) === null){
         localStorage.setItem(`${this.gamename}`,JSON.stringify(this.score))
-        // localStorage.setItem(`name:${this.gamename}`,JSON.stringify(this.gamename))
       }
       else if(this.score>JSON.parse(localStorage.getItem(`${this.gamename}`))){
         localStorage.setItem(`${this.gamename}`,JSON.stringify(this.score))
