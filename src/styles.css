@@ -37,6 +37,9 @@ body::-webkit-scrollbar {
   background-color: var(--card-color);
   color:var(--font-color);
 }
+.error{
+  color:red;
+}
 .login,.signup{
   display: flex;
   justify-content:center;

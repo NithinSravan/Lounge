@@ -10,8 +10,9 @@ import{mimeType}from './mime-type.validator';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
-  newPost="No Post";
+  submitted:boolean=false;
   content=" ";
+  errmessage:string;
   post:Post;
   form:FormGroup;
   imagePreview:string;
@@ -21,7 +22,6 @@ export class PostCreateComponent implements OnInit {
     this.form=new FormGroup({
       content:new FormControl(null,{validators:[Validators.required]}),
       image:new FormControl(null,{validators:[Validators.required],asyncValidators:mimeType})
-
     });
   }
   onImagePicked(event:Event){
@@ -36,11 +36,13 @@ export class PostCreateComponent implements OnInit {
 
   }
   onSavePost(){
+    this.submitted=true;
     if(this.form.invalid){
-      console.log(":O")
+      this.errmessage="Please upload valid image file or ensure if you have filled in your thoughts."
       return;
     }
     this.postsService.addPosts(this.form.value.content,this.form.value.image);
+    this.submitted=false;
     this.form.reset();
   }
 }

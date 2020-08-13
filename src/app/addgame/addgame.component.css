@@ -65,7 +65,9 @@
 input[type="file"]{
   visibility: hidden;
   display: block;
-
+}
+.success{
+  color: rgb(121, 243, 65);
 }
 #addgamebtn,#uploadbtn{
   padding: 15px 10px;

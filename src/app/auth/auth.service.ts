@@ -16,7 +16,9 @@ export class AuthService {
   private token:string;
   private timer:any;
   private user:User;
+  errmessage:string;
   private authStatusListener=new Subject<boolean>();
+  updateError=new Subject<string>();
   constructor(private http:HttpClient,private router:Router) { }
 
   getToken(){
@@ -24,6 +26,9 @@ export class AuthService {
   }
   getAuthStatusListener(){
     return this.authStatusListener.asObservable()
+  }
+  getErrorListener(){
+    return this.updateError.asObservable()
   }
   getIsAuth(){
     return this.isAuthenticated;
@@ -42,6 +47,9 @@ export class AuthService {
     .subscribe(res=>{
       this.router.navigate(['/login']);
       console.log(res);
+    },(err)=>{
+        this.errmessage="Form wasn't submitted successfully.Please specify a different username or an email ID that hasn't been registered already."
+        this.updateError.next(this.errmessage)
     })
   }
   autoAuthUser(){
@@ -86,6 +94,9 @@ export class AuthService {
         this.saveAuthData(token,expirationDate,user);
         console.log("logged in",token)
       }
+    },(err)=>{
+        this.errmessage="Invalid credentials.Please try again."
+        this.updateError.next(this.errmessage)
     })
   }
   logout(){

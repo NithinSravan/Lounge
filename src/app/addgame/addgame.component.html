@@ -23,8 +23,11 @@
     </div>
     <input type="text" formControlName="gamename" id="gamename" placeholder="enter game name">
     <button type="submit" id="uploadbtn">Upload</button>
+    <div class="error" *ngIf="errmessage&&submitted">{{errmessage}}</div>
+    <div class="success" *ngIf="successmessage&&!submitted">{{successmessage}}</div>
   </form>
 </div>
+
 </main>
 
 

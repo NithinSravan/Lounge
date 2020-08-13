@@ -20,9 +20,9 @@
   transform: scale(1.08);
 }
 .error{
-  color:red;
-}
-#note{
   margin-top: 30px;
   text-align: center;
+}
+.error-req{
+  color: red;
 }

@@ -10,6 +10,9 @@ import { AddgameService } from './addgame.service';
 export class AddgameComponent implements OnInit {
   file:string;
   filePreview:string;
+  errmessage:string;
+  submitted:boolean=false;
+  successmessage:string;
   form:FormGroup;
   constructor(public addgameService:AddgameService) { }
 
@@ -33,10 +36,15 @@ export class AddgameComponent implements OnInit {
 
   }
   onUpload(){
+    this.submitted=true;
     if(this.form.invalid){
-      console.log(":O")
+      this.errmessage="Error in game upload. Please read the instructions carefully."
       return;
     }
     this.addgameService.addGame(this.form.value.gamename,this.form.value.file)
+    this.submitted=false;
+    this.successmessage="Game Uploaded!"
+    this.form.reset()
+
   }
 }

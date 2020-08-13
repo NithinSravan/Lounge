@@ -11,6 +11,8 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnInit,OnDestroy {
 
   userIsAuthenticated=false;
+  errmessage:string;
+  errorSub:Subscription;
   private authListenerSubs:Subscription;
   constructor(private authService:AuthService) { }
 
@@ -19,6 +21,10 @@ export class LoginComponent implements OnInit,OnDestroy {
     .subscribe(isAuthenticated =>{
       this.userIsAuthenticated=isAuthenticated;
     });
+    this.errorSub=this.authService.getErrorListener()
+    .subscribe(err=>{
+      this.errmessage=err;
+    })
   }
   ngOnDestroy(){
     this.authListenerSubs.unsubscribe();

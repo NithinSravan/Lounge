@@ -1,4 +1,5 @@
 <div class="card">
+  <div class="error" *ngIf="errmessage&&submitted">{{errmessage}}</div>
   <form [formGroup]="form" (submit)="onSavePost()" >
     <div class="img-controls">
       <button id="imgbtn" type="button" (click)="filePicker.click()">Add image</button>
@@ -17,5 +18,4 @@
 </textarea>
   <button type="submit" id="createbtn">Post</button>
   </form>
-
 </div>

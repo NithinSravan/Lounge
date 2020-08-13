@@ -35,7 +35,9 @@ textarea:focus {
   color:var(--muted-color);
   border: 1px solid rgb(88, 70, 255);
 }
-
+.error{
+  margin-bottom: 15px;
+}
 #imgbtn,#createbtn{
   padding: 15px 10px;
   border-radius: 36px;
