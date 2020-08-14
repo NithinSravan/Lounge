@@ -29,7 +29,6 @@ export class NotificationsComponent implements OnInit,OnDestroy {
       this.isAuthenticated=isAuthenticated;
       this.user=this.authService.getUserInfo();
     })
-
   }
   ngOnDestroy(){
     this.notifsSub.unsubscribe();

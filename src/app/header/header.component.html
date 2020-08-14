@@ -26,6 +26,12 @@
   </nav>
   <div class="user-link">
     <ul>
+      <li [ngClass]="{'notifs-full':notifs,
+                       'notifs-empty':notifs.length===0}">
+        <img (click)="bellToggle.click()" src="../../assets/img/notification.svg">
+        <input type="checkbox" #bellToggle (change)="toggle($event)">
+      </li>
+      <div id="dropdown-notifs"> <app-notifications></app-notifications></div>
       <li class="navlist">
         <button id="logout" (click)="onLogout()">
           Log Out
