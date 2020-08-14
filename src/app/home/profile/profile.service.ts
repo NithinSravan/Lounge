@@ -107,11 +107,9 @@ export class ProfileService {
         }
     }
     followUser(){
-      console.log(this.username)
       if( this.reqSent===false){
         this.http.patch<{message:string}>(HOST_URL+'request',{username:this.username})
         .subscribe(res=>{
-          console.log(res.message)
           this.reqSent=true;
           this.profileUpdated.next({
             username:this.username,
@@ -126,15 +124,13 @@ export class ProfileService {
         })
       }
       else{
-        console.log("request already sent")
+        return;
       }
     }
     unfollow(){
-      console.log(this.username)
       if( this.areFriends){
         this.http.patch<{message:string}>(HOST_URL+'unfollow',{username:this.username})
         .subscribe(res=>{
-          console.log(res.message)
           this.areFriends=false;
           this.profileUpdated.next({
             username:this.username,
@@ -148,13 +144,12 @@ export class ProfileService {
         })
       }
       else{
-        console.log("request already sent")
+        return;
       }
     }
     onAccept(username:string){
       this.http.patch(HOST_URL+'accept',{username})
       .subscribe(res=>{
-        console.log(res)
         this.areFriends=true;
         this.pendingReq=false;
         this.reqSent=false;
@@ -189,7 +184,6 @@ export class ProfileService {
     friendshipStatus(id:string){
       this.http.get<{checkSent:string[],checkFriendsList:string[],checkRequest:string[]}>(HOST_URL+'friendship-status/'+id)
       .subscribe((areFriends)=>{
-        console.log(areFriends.checkFriendsList.length)
         if(areFriends.checkSent.length!==0){
           this.reqSent=true;
         }

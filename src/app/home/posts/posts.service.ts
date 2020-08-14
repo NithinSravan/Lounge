@@ -18,7 +18,6 @@ export class PostsService {
   getPosts(){
    this.http.get<{posts:Post[]}>(HOST_URL)
  .subscribe(postsArr=>{
-      console.log(postsArr)
       this.posts=postsArr.posts;
       this.postUpdated.next([...this.posts]);
    });

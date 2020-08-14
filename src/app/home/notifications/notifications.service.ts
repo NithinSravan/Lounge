@@ -15,7 +15,6 @@ export class NotificationsService {
   getNotifs(){
     this.http.get<{requests:any}>(HOST_URL+'received-requests')
     .subscribe(res=>{
-      console.log(res.requests)
       this.notifs=res.requests;
       this.notifsUpdated.next([...this.notifs]);
     })
@@ -26,7 +25,6 @@ export class NotificationsService {
   onAccept(username:string,i:number){
     this.http.patch(HOST_URL+'accept',{username})
     .subscribe(res=>{
-      console.log(res)
       const buttons=document.getElementsByClassName('buttons') as HTMLCollectionOf<HTMLElement>
       buttons[i].style.display="none";
       const myDiv = document.createElement('div');
@@ -43,7 +41,6 @@ export class NotificationsService {
     .subscribe(res=>{
       (document.getElementsByClassName('notifcard') as HTMLCollectionOf<HTMLElement>)[i].style.display="none";
       this.notifs.splice(i,1);
-      console.log(this.notifs)
       this.notifsUpdated.next([...this.notifs]);
     })
   }

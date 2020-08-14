@@ -34,7 +34,6 @@ export class LeaderboardComponent implements OnInit,OnDestroy {
 
   }
   ngOnDestroy(){
-    console.log("destoryed")
     this.scoresSub.unsubscribe();
   }
 }

@@ -46,7 +46,6 @@ export class AuthService {
     this.http.post(HOST_URL+'signup',authData)
     .subscribe(res=>{
       this.router.navigate(['/login']);
-      console.log(res);
     },(err)=>{
         this.errmessage="Form wasn't submitted successfully.Please specify a different username or an email ID that hasn't been registered already."
         this.updateError.next(this.errmessage)
@@ -81,7 +80,6 @@ export class AuthService {
         name:res.name,
         username:res.username
       };
-      console.log(user)
       if(token) {
         const expiry=res.expiresIn;
         this.setAuthTimer(expiry);
@@ -92,7 +90,7 @@ export class AuthService {
         const now= new Date();
         const expirationDate=new Date(now.getTime()+expiry*1000);
         this.saveAuthData(token,expirationDate,user);
-        console.log("logged in",token)
+        console.log("logged in")
       }
     },(err)=>{
         this.errmessage="Invalid credentials.Please try again."

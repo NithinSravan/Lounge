@@ -43,7 +43,7 @@ left:0;
   border-bottom: 2px solid rgb(98, 64, 252);
   flex-direction: row;
   list-style: none;
-  overflow-x: scroll;
+  overflow-x: auto;
   background-color: rgb(98, 64, 252);
 }
 .board{

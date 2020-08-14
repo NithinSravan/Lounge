@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit,OnDestroy{
     this.user=this.authService.getUserInfo();
     this.profileService.friendshipStatus(this.id);
     this.profileSub=this.profileService.getProfileUpdateListener().subscribe((resData:any)=>{
-      console.log(resData)
         this.posts=resData.posts;
         this.username=resData.username;
         this.name=resData.name;

@@ -22,7 +22,6 @@ export class NotificationsComponent implements OnInit,OnDestroy {
     this.user=this.authService.getUserInfo();
     this.notifsSub=this.notifsService.getNotifsUpdateListener().subscribe((notifs:any[])=>{
         this.notifs=notifs;
-        console.log(notifs)
       });
     this.isAuthenticated=this.authService.getIsAuth();
     this.authStatusSub=this.authService.getAuthStatusListener()

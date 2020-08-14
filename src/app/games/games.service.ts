@@ -19,13 +19,11 @@ export class GamesService {
 
   constructor(private http:HttpClient,public addgameService:AddgameService) { }
   getScores(gamename:string){
-    console.log(gamename)
     if(gamename===''){
       return;
     }
     this.http.get<{scores:scoreCard[]}>(HOST_URL+'scores/'+gamename)
     .subscribe(scoresArr=>{
-      console.log(scoresArr)
        this.scores=scoresArr.scores;
        this.scoreUpdated.next([...this.scores]);
      });
@@ -38,7 +36,6 @@ export class GamesService {
     const scorecard={
       score,gamename
     }
-    console.log(scorecard)
      this.http.post<{message:string,scorecard:scoreCard}>(HOST_URL+"score",scorecard)
     .subscribe(res=>{
       const scorecard={
@@ -48,7 +45,6 @@ export class GamesService {
         player:res.scorecard.player,
         playername:res.scorecard.playername
       }
-      console.log(res.message);
       this.scores.push(scorecard);
       this.getScores(gamename);
      })
@@ -77,7 +73,6 @@ export class GamesService {
 
   }
   gameSelect(i){
-    console.log(this.games)
     this.i=i;
     this.indexUpdated.next(this.i);
     document.querySelector('iframe').src=this.games[i].url;

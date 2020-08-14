@@ -30,7 +30,6 @@ export class GamesComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy(){
-    console.log(this.i)
     let gamename;
     if(typeof(this.i)!="undefined"){
       gamename=this.gamesService.getGamename(this.i);
