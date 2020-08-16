@@ -13,6 +13,7 @@
   --grad-3:orange;
   --grad-4:orange;
   --bg-color: #fff;
+  --banner:#fff;
 }
 [data-theme="dark"] {
     --card-color: rgb(66, 64, 82);
@@ -23,6 +24,7 @@
     --grad-3:rgb(161, 47, 255);
     --grad-4:rgb(87, 27, 226);
     --bg-color: rgb(39, 36, 56);
+    --banner:rgb(39, 36, 56);
 }
 body{
   background-color:var(--bg-color);

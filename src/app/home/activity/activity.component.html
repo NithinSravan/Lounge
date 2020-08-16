@@ -1,3 +1,8 @@
 <div class="side">
-  <div class="activity-header">What's Cooking?</div>
+  <div class="activity-header">The Noticeboard</div>
+  <div class="notifcard"  [ngClass]="{'pale':this.user.username===this.notif.username}" *ngFor="let notif of notifs;let i=index;" >
+      <div class="username"  [ngClass]="{'pale-darkmode':this.user.username===this.notif.username}">{{this.notif.username}} {{this.notif.message}}</div>
+      <span class="error" *ngIf="this.user.username===this.notif.username" (click)="this.addGameService.readNotif(i)">Unpin</span>
+  </div>
+
 </div>

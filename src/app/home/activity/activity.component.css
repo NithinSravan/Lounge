@@ -9,7 +9,24 @@
   color:var(--font-color);
   font-size: 1.1em;
   padding: 20px;
-  background-color:var(--card-color);;
+  background-color:var(--banner);
   box-shadow:0px 0px 15px rgba(0,0,0,0.3);
   border-bottom: 1px solid rgba(109, 101, 101,0.5);
+}
+.notifcard{
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--card-color);
+  border-bottom: 1px solid rgba(109, 101, 101,0.5);
+  padding: 15px 20px;
+}
+.username{
+  color: var(--font-color);
+  font-size: 1em;
+}
+.pale{
+  background: rgb(255, 253, 123);
+}
+.pale-darkmode{
+  color:#000;
 }

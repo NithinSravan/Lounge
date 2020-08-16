@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const Post = require("../models/post");
+const Notif=require("../models/notif")
 exports.signup = async (req, res) => {
   const user = new User(req.body);
   try {
@@ -157,3 +158,21 @@ exports.friendship = async (req, res) => {
   });
   res.status(201).json({ checkSent, checkFriendsList, checkRequest });
 };
+
+exports.pushNotifs=async(req,res)=>{
+  const notif=new Notif({
+    message:req.body.message,
+    username:req.body.username
+  })
+  await notif.save();
+  res.status(201).json({ message:"Notified" });
+}
+exports.readNotifs=async(req,res)=>{
+  await Notif.deleteOne({_id:req.params.id});
+  res.status(201).json({ message:"read" });
+
+}
+exports.getNotifs=async(req,res)=>{
+  const notifs=await Notif.find();
+  res.status(201).json({ notifs:[...notifs] });
+}

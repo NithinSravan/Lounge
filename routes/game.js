@@ -29,7 +29,7 @@ const storage=multer.diskStorage({
   }
 });
 
-router.post("/add-game",multer({storage}).single('file'),GameController.addGame);
+router.post("/add-game",auth,multer({storage}).single('file'),GameController.addGame);
 router.get("/games",GameController.games);
 router.get("/scores/:gamename",GameController.gameScore);
 router.post("/score",auth,GameController.updateScore);

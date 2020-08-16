@@ -14,6 +14,7 @@ exports.addGame = async (req, res) => {
     const game = new Game({
       url: url,
       gamename: gamename,
+      addedBy:req.userData.username
     });
     await game.save();
     res.status(200).json(game);

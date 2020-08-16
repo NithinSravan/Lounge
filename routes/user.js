@@ -13,4 +13,7 @@ router.patch("/unfollow",auth,UserController.unfollow);
 router.patch("/accept",auth,UserController.accept);
 router.patch("/reject",auth,UserController.reject);
 router.get("/friendship-status/:id",auth,UserController.friendship);
+router.patch("/push-notifs",auth,UserController.pushNotifs);
+router.delete("/read-notifs/:id",auth,UserController.readNotifs);
+router.get("/get-notifs",auth,UserController.getNotifs);
 module.exports=router;

@@ -1,5 +1,6 @@
  <div id="notifications">Notifications</div>
-  <div *ngFor="let notif of notifs;let i=index;" >
+ <div id="notif-list">
+  <div  *ngFor="let notif of notifs;let i=index;" >
     <div class="notifcard" >
       <div class="sender">
         <div class="name">{{notif.name}}</div>
@@ -11,4 +12,6 @@
       </div>
     </div>
 </div>
+ </div>
+
 

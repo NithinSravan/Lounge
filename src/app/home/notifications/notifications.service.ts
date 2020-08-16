@@ -31,8 +31,8 @@ export class NotificationsService {
 			document.getElementsByClassName('notifcard')[i].appendChild(myDiv);
       myDiv.classList.add("friends-now");
       const friendsnow=document.getElementsByClassName('friends-now') as HTMLCollectionOf<HTMLElement>
-      friendsnow[i].innerText="You are friends!"
-      this.notifs.splice(i);
+      friendsnow[i].innerText="You are friends!";
+      this.notifs.splice(i,1);
 
     })
   }

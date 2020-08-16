@@ -19,7 +19,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { SearchComponent } from './header/search/search.component';
 import { NotificationsComponent } from './home/notifications/notifications.component';
 import { AddgameComponent } from './addgame/addgame.component';
-
+import { ActivityComponent } from './home/activity/activity.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -36,14 +37,16 @@ import { AddgameComponent } from './addgame/addgame.component';
     ProfileComponent,
     SearchComponent,
     NotificationsComponent,
-    AddgameComponent
+    AddgameComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBadgeModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]

@@ -78,6 +78,7 @@ input[type="file"]{
   cursor: pointer;
   margin-top: 10px;
   margin-bottom:10px;
+  outline: none;
   font-weight: 700;
   border:none;
   background:linear-gradient(45deg,rgb(255, 87, 219),rgb(205, 42, 255),rgb(161, 47, 255),rgb(87, 27, 226));
