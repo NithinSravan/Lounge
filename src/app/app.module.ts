@@ -20,7 +20,6 @@ import { SearchComponent } from './header/search/search.component';
 import { NotificationsComponent } from './home/notifications/notifications.component';
 import { AddgameComponent } from './addgame/addgame.component';
 import { ActivityComponent } from './home/activity/activity.component';
-import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -45,8 +44,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
-    MatBadgeModule
+    HttpClientModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
