@@ -1,6 +1,7 @@
 # Lounge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+This is an interactive social media website that allows user to upload games publically. Users can make friends by sending friend requests and share he your favourite moments using posts feature. Users can compete globally with players and clutch their position on the leaderboard.
 
 ## Development server
 
